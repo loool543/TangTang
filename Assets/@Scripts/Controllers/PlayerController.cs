@@ -7,6 +7,12 @@ public class PlayerController : MonoBehaviour
     Vector2 _moveDir = Vector2.zero;
     float _speed = 5.0f;
 
+    public Vector2 MoveDir
+    {
+        get { return _moveDir; }
+        set { _moveDir = value.normalized; }
+    }
+
     void Start()
     {
         
