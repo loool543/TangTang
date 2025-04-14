@@ -19,6 +19,7 @@ public class GameScene : MonoBehaviour
 
     void Start()
     {
+
         _snake = GameObject.Instantiate(_snakePrefab);
         _slime = GameObject.Instantiate(_slimePrefab);
         _goblin = GameObject.Instantiate(_goblinPrefab);

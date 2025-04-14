@@ -22,7 +22,6 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     void Start()
     {
         _joystickRadius = _background.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
-        _player = GameObject.Find("Slime_01").GetComponent<PlayerController>();
 
     }
 
@@ -48,6 +47,10 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     {
         _handler.transform.position = _touchPosition;
         _moveDir = Vector2.zero;
+
+        //Temp2
+        Managers.Game.MoveDir = _moveDir;
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -60,6 +63,11 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
         _moveDir = touchDir.normalized;
 
          _handler.transform.position = _touchPosition + _moveDir * moveDist;
+
+
+        //Temp2
+        Managers.Game.MoveDir = _moveDir;
+
     }
 }
 
