@@ -14,8 +14,20 @@ public class PlayerController : MonoBehaviour
     }
 
     void Start()
+    { 
+        //Temp3 구독신청
+        Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged; //여기에서 함수 1개를 연결해주어야 한다!
+    }
+
+    private void OnDestroy()
     {
-        
+        if(Managers.Game != null)
+            Managers.Game.OnMoveDirChanged -= HandleOnMoveDirChanged;
+    }
+
+    void HandleOnMoveDirChanged(Vector2 dir)
+    {
+        _moveDir = dir;
     }
 
     void Update()
@@ -28,9 +40,8 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        //Temp2
-        _moveDir = Managers.Game.MoveDir;
-
+        //Temp2  매프레임마다 값을 가져오는 방식
+        //_moveDir = Managers.Game.MoveDir;
 
         Vector3 dir = _moveDir * _speed *Time.deltaTime;
         transform.position += dir;
