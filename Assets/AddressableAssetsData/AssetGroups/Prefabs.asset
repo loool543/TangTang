@@ -20,15 +20,27 @@ MonoBehaviour:
   - m_GUID: 0714a6d068392e941a0594109ffa4804
     m_Address: Slime_01.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Prefabs
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69fec397eba7d72459231861a0857238
     m_Address: Snake_01.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Prefabs
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fc0f29c592ea18c42850d8e526fd63a2
     m_Address: Goblin_01.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Prefabs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5828d990b9f154f44ba0af5514e251ad
+    m_Address: Map.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefabs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 18a0e6f2ff5043443bf27ea8fd5ee594, type: 2}
   m_SchemaSet:

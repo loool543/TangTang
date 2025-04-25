@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
   m_DefaultGroup: 026cde4bdf14e674bbb44da34ff17148
-  m_CachedHash:
+  m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: a3afcea2712dce1e25acc1e56f98005c
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -32,11 +32,14 @@ MonoBehaviour:
   m_ShaderBundleNaming: 0
   m_ShaderBundleCustomNaming: 
   m_MonoScriptBundleNaming: 0
+  m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
+  m_ContentStateBuildPathProfileVariableName: 
+  m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: 
@@ -44,6 +47,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed0f101d390ee5040aede731f529d10a, type: 2}
   - {fileID: 11400000, guid: 38307328a75a8fd44bdbff6156be2245, type: 2}
   - {fileID: 11400000, guid: 7c745d295070eed4b9cdf6acba54032c, type: 2}
+  - {fileID: 11400000, guid: 41fa171ddd2e38945842ed3087d4551c, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -85,6 +89,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Prefabs
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 350694990d19c8747b493c65a274a08e, type: 2}
@@ -104,3 +109,4 @@ MonoBehaviour:
     m_Settings: {fileID: 11400000}
     m_NextInstanceId: 0
     m_RegisteredServiceTypeRefs: []
+    m_PingTimeoutInMilliseconds: 5000

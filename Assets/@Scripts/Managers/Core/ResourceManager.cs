@@ -67,7 +67,7 @@ public class ResourceManager
         };
     }
 
-    public void LoadAllAsync<T>(string label, Action<string, int, int> callback)where T : UnityEngine.Object
+    public void LoadAllASync<T>(string label, Action<string, int, int> callback)where T : UnityEngine.Object
     {
         var opHandle = Addressables.LoadResourceLocationsAsync(label, typeof(T));
         opHandle.Completed += (op) =>
