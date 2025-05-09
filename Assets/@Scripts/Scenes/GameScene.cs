@@ -12,17 +12,16 @@ public class GameScene : MonoBehaviour
 
             if(count == totalCount)
             {
-                StartLoaded();
+                StartLoaded2();
             }
         });
 
     }
 
-
+    //복습용으로 남겨둠! 
     void StartLoaded()
     {
-
-        GameObject player = Managers.Resource.Instantiate("Slime_01.prefab");
+        var player = Managers.Resource.Instantiate("Slime_01.prefab");
         player.AddComponent<PlayerController>();
 
         var _goblin = Managers.Resource.Instantiate("Goblin_01.prefab");
@@ -40,9 +39,31 @@ public class GameScene : MonoBehaviour
         Camera.main.GetComponent<CameraController>().Target = player;
     }
 
+    SpawningPool spawningPool;
+    void StartLoaded2()
+    {
+         spawningPool = gameObject.AddComponent<SpawningPool>();
+
+        var player = Managers.Object.Spawn<PlayerController>();
+        //GameObject go = new GameObject() { name = "@Monsters" };
+
+        for (int i = 0; i < 10; i++)
+        {
+            MonsterController mc = Managers.Object.Spawn<MonsterController>(Random.Range(0, 2));
+            mc.transform.position = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+            //mc.transform.parent = go.transform;
+        }
+
+        var joystick = Managers.Resource.Instantiate("UI_Joystick.prefab");
+        joystick.name = "@UI_Joystick";
+
+        var map = Managers.Resource.Instantiate("Map.prefab");
+        map.name = "@Map";
+        Camera.main.GetComponent<CameraController>().Target = player.gameObject;
+    }
+
     void Update()
     {
         
     }
 }
- 

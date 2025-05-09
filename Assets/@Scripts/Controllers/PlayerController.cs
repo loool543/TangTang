@@ -46,4 +46,16 @@ public class PlayerController : CreatureController
         Vector3 dir = _moveDir * _speed *Time.deltaTime;
         transform.position += dir;
     }
+
+    public override void OnDamaged(BaseController attacker, int damage)
+    {
+        base.OnDamaged(attacker, damage);
+
+        Debug.Log($"OnDamaged !  {Hp}");
+
+        //Temp
+        //pooling 실험 하려고 일단 반격해서 몬스터들을 죽이기 위해서! 만 데미지 주기
+        CreatureController cc = attacker as CreatureController;
+        cc?.OnDamaged(this, 10000);
+    }
 }
