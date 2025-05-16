@@ -12,7 +12,14 @@ public class GameScene : MonoBehaviour
 
             if(count == totalCount)
             {
-                StartLoaded2();
+                Managers.Resource.LoadAllASync<TextAsset>("Data", (key3, count3, totalCount3) =>
+                {
+                    Debug.Log($"{key3}  {count3}/{totalCount3}");
+                    if (count3 == totalCount3)
+                    {
+                        StartLoaded2();
+                    }
+                });
             }
         });
 
@@ -60,6 +67,14 @@ public class GameScene : MonoBehaviour
         var map = Managers.Resource.Instantiate("Map.prefab");
         map.name = "@Map";
         Camera.main.GetComponent<CameraController>().Target = player.gameObject;
+
+        //Data Test
+        Managers.Data.Init();
+
+        foreach(var playerData in Managers.Data.PlayerDic.Values)
+        {
+            Debug.Log($"Lv : {playerData.level}, Hp{playerData.maxHp}");
+        }
     }
 
     void Update()
