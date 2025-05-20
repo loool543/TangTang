@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6463377047740109795}
   - component: {fileID: 6503482835359133947}
   - component: {fileID: 9118685578744189998}
-  - component: {fileID: -7937069077837792654}
+  - component: {fileID: 7769832427122444797}
   m_Layer: 0
   m_Name: Goblin_01
   m_TagString: Untagged
@@ -129,8 +129,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &-7937069077837792654
-BoxCollider2D:
+--- !u!58 &7769832427122444797
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,15 +143,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.22, y: 1.45}
-    newSize: {x: 1.22, y: 1.45}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.94, y: 0.83}
-  m_EdgeRadius: 0
+  m_Radius: 0.4

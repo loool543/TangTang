@@ -6,27 +6,20 @@ public class GameScene : MonoBehaviour
 {
     void Start()
     {
-        Managers.Resource.LoadAllASync<GameObject>("Prefabs", (key, count, totalCount) =>
+        Managers.Resource.LoadAllASync<Object>("PreLoad", (key, count, totalCount) =>
         {
             Debug.Log($"{key} {count}/ {totalCount}");
 
             if(count == totalCount)
             {
-                Managers.Resource.LoadAllASync<TextAsset>("Data", (key3, count3, totalCount3) =>
-                {
-                    Debug.Log($"{key3}  {count3}/{totalCount3}");
-                    if (count3 == totalCount3)
-                    {
-                        StartLoaded2();
-                    }
-                });
+                StartLoaded();
             }
         });
 
     }
 
     //복습용으로 남겨둠! 
-    void StartLoaded()
+    void StartLoaded2()
     {
         var player = Managers.Resource.Instantiate("Slime_01.prefab");
         player.AddComponent<PlayerController>();
@@ -47,7 +40,7 @@ public class GameScene : MonoBehaviour
     }
 
     SpawningPool spawningPool;
-    void StartLoaded2()
+    void StartLoaded()
     {
          spawningPool = gameObject.AddComponent<SpawningPool>();
 
