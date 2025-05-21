@@ -93,6 +93,7 @@ MonoBehaviour:
     - default
     - Prefabs
     - Data
+    - PreLoad
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 350694990d19c8747b493c65a274a08e, type: 2}

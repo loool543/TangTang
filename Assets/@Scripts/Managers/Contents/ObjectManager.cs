@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectManager 
@@ -9,7 +10,7 @@ public class ObjectManager
     public HashSet<ProjectileController> Projectiles { get; } = new HashSet<ProjectileController>();
     public HashSet<GemController> Gems { get; } = new HashSet<GemController>();
 
-    public T Spawn<T>(int templateID = 0) where T : BaseController
+    public T Spawn<T>(Vector3 position, int templateID = 0) where T : BaseController
     {
         System.Type type = typeof(T);
 
@@ -19,9 +20,11 @@ public class ObjectManager
             //나중에는 하드코딩이 아니라 데이터시트에서 해당 templateid의 템플릿을 불러오면됨
 
             go.name = "Player";
+            go.transform.position = position;
 
             PlayerController pc = Utils.GetOrAddComponent<PlayerController>(go);
             Player = pc;
+            pc.Init();
 
             return pc as T;
         }
@@ -30,12 +33,30 @@ public class ObjectManager
             string name = (templateID == 0 ? "Goblin_01" : "Snake_01");
             GameObject go = Managers.Resource.Instantiate(name + ".prefab", pooling: true);
 
+            go.transform.position = position;
             MonsterController mc = Utils.GetOrAddComponent<MonsterController>(go);
             Monsters.Add(mc);
+            mc.Init();
 
             return mc as T;
         }
-        return null;
+        else if (type == typeof(GemController))
+        {
+            GameObject go = Managers.Resource.Instantiate(Define.EXP_GEM_PREFAB, pooling: true);
+            go.transform.position = position;
+
+            GemController gc = go.GetOrAddComponent<GemController>();
+            Gems.Add(gc);
+            gc.Init();
+
+            string key = Random.Range(0, 2) == 0 ? "EXPGem_01.sprite" : "EXPGem_02.sprite";
+            Sprite sprite = Managers.Resource.Load<Sprite>(key);
+            go.GetComponent<SpriteRenderer>().sprite = sprite;
+
+            return gc as T;
+        }
+
+            return null;
     }
 
     public void Despawn<T>(T obj) where T : BaseController

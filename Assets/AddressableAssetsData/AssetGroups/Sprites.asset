@@ -12,11 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: Sprites
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: Sprites
   m_Data:
     m_SerializedData: []
   m_GUID: 3db172d097dc24e40ba55ae01fe3e92c
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 72031f53717894446b7db04da425035e
+    m_Address: EXPGem_01.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c92a377b5edb174f95ad6b06fddd394
+    m_Address: EXPGem_02.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd762955d15fd0449be2f1aefc217307
+    m_Address: EXPGem_03.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 18a0e6f2ff5043443bf27ea8fd5ee594, type: 2}
   m_SchemaSet:

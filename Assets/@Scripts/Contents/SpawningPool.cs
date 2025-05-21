@@ -8,8 +8,8 @@ public class SpawningPool : MonoBehaviour
     // 몬스터 최대 개수는?
     // 스톱?
 
-    float _spawnInterval = 2.0f;
-    int _max_MonsterCount = 100;
+    float _spawnInterval = 1.0f;
+    int _max_MonsterCount = 200;
     Coroutine _coUpdateSpawningPool;
 
     // Start is called before the first frame update
@@ -40,8 +40,8 @@ public class SpawningPool : MonoBehaviour
             return;
 
         //
-        MonsterController mc = Managers.Object.Spawn<MonsterController>(Random.Range(0, 2));
-        mc.transform.position = new Vector2(Random.Range(-5, -5), Random.Range(-5, -5));
+        Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+        MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(0, 2));
     }
 
 }

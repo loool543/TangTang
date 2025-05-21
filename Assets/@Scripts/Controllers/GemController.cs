@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GemController : MonoBehaviour
+public class GemController : BaseController
 {
-    // Start is called before the first frame update
-    void Start()
+    public override bool Init()
     {
-        
-    }
+       base.Init();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //TODO
+
+        return true;
     }
 }

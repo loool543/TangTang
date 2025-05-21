@@ -60,10 +60,23 @@ public class ResourceManager
             return;
         }
 
+        string loadKey = key;
+        if (key.Contains(".sprite"))
+            loadKey = $"{key}[{key.Replace(".sprite", "")}]";
+
         //리소스 비동기 로딩 시작.
-        var asyncOperation = Addressables.LoadAssetAsync<T>(key);
+        var asyncOperation = Addressables.LoadAssetAsync<T>(loadKey);
         asyncOperation.Completed += (op) =>
         {
+            if (op.Result is Texture2D texture)
+            {
+                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+
+                _resources.Add(key, sprite);
+                callback?.Invoke(sprite as T);
+                return;
+
+            }
             _resources.Add(key, op.Result);
             callback?.Invoke(op.Result);
         };
