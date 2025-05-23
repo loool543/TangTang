@@ -53,6 +53,10 @@ public class ObjectManager
             Sprite sprite = Managers.Resource.Load<Sprite>(key);
             go.GetComponent<SpriteRenderer>().sprite = sprite;
 
+
+            //Temp
+            GameObject.Find("@Grid").GetComponent<GridController>().Add(go);
+
             return gc as T;
         }
 
@@ -76,6 +80,10 @@ public class ObjectManager
         {
             Gems.Remove(obj as GemController);
             Managers.Resource.Destroy(obj.gameObject);
+
+            //TEMP
+            GameObject.Find("@Grid").GetComponent<GridController>().Remove(obj.gameObject);
+
         }
         else if (type == typeof(ProjectileController))
         {

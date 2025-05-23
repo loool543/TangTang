@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : CreatureController
 {
     Vector2 _moveDir = Vector2.zero;
     float _speed = 5.0f;
+
+    float EnvCollectDist { get; set; } = 1.0f;
+
 
     public Vector2 MoveDir
     {
@@ -34,6 +38,7 @@ public class PlayerController : CreatureController
     {
        //UpdateInput();
         MovePlayer();
+        CollectEnv();
     }
 
 
@@ -46,6 +51,28 @@ public class PlayerController : CreatureController
         Vector3 dir = _moveDir * _speed *Time.deltaTime;
         transform.position += dir;
     }
+
+    void CollectEnv()
+    {
+        float sqrCollectDist = EnvCollectDist * EnvCollectDist; //제곱을 해주면 거리비교를 할 때 제곱근을 구하지 않아도 된다
+
+        List<GemController> gems = Managers.Object.Gems.ToList();//spawn이 되어있는 모든 젬들을 긁어올 수 있다
+        foreach(GemController gem in gems)
+        {
+            Vector3 dir = gem.transform.position - transform.position;
+            if( dir.sqrMagnitude <= EnvCollectDist)
+            {
+                Managers.Game.Gem += 1; //젬을 먹으니까 1 증가
+                Managers.Object.Despawn(gem);
+            }
+        }
+
+
+        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist+0.5f);
+
+        Debug.Log($"SearchGems({findGems.Count}) TotalGems({gems.Count})");
+    }
+
 
     public override void OnDamaged(BaseController attacker, int damage)
     {

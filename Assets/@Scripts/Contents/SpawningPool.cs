@@ -8,8 +8,8 @@ public class SpawningPool : MonoBehaviour
     // 몬스터 최대 개수는?
     // 스톱?
 
-    float _spawnInterval = 1.0f;
-    int _max_MonsterCount = 200;
+    float _spawnInterval = 0.5f;
+    int _max_MonsterCount = 500;
     Coroutine _coUpdateSpawningPool;
 
     // Start is called before the first frame update
