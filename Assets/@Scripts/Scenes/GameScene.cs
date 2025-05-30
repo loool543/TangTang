@@ -42,7 +42,8 @@ public class GameScene : MonoBehaviour
     SpawningPool spawningPool;
     void StartLoaded()
     {
-         spawningPool = gameObject.AddComponent<SpawningPool>();
+        Managers.Data.Init();
+        spawningPool = gameObject.AddComponent<SpawningPool>();
 
         var player = Managers.Object.Spawn<PlayerController>(Vector3.zero);
         //GameObject go = new GameObject() { name = "@Monsters" };
