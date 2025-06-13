@@ -75,9 +75,11 @@ public class PlayerController : CreatureController
     {
         float sqrCollectDist = EnvCollectDist * EnvCollectDist; //제곱을 해주면 거리비교를 할 때 제곱근을 구하지 않아도 된다
 
-        List<GemController> gems = Managers.Object.Gems.ToList();//spawn이 되어있는 모든 젬들을 긁어올 수 있다
-        foreach(GemController gem in gems)
+        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
+
+        foreach (var go in findGems)
         {
+            GemController gem = go.GetComponent<GemController>();
             Vector3 dir = gem.transform.position - transform.position;
             if( dir.sqrMagnitude <= EnvCollectDist)
             {
@@ -86,10 +88,6 @@ public class PlayerController : CreatureController
             }
         }
 
-
-        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist+0.5f);
-
-        Debug.Log($"SearchGems({findGems.Count}) TotalGems({gems.Count})");
     }
 
 

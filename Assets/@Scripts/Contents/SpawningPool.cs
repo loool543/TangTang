@@ -8,8 +8,8 @@ public class SpawningPool : MonoBehaviour
     // 몬스터 최대 개수는?
     // 스톱?
 
-    float _spawnInterval = 0.5f;
-    int _max_MonsterCount = 500;
+    float _spawnInterval = 0.1f;
+    int _max_MonsterCount = 100;
     Coroutine _coUpdateSpawningPool;
 
     // Start is called before the first frame update
@@ -39,8 +39,8 @@ public class SpawningPool : MonoBehaviour
         if (monsterCount >= _max_MonsterCount)
             return;
 
-        //
-        Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+        //Data시트에서 ??
+        Vector3 randPos = Utils.GenerateMonsterSpawnPosition(Managers.Game.Player.transform.position, 10, 15);
         MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(0, 2));
     }
 
