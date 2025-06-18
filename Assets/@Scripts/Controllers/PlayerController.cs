@@ -31,6 +31,7 @@ public class PlayerController : CreatureController
         Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged; //여기에서 함수 1개를 연결해주어야 한다!
 
         StartProjectile();
+        StartEgoSword();
 
         return true;
     }
@@ -130,4 +131,19 @@ public class PlayerController : CreatureController
 
     #endregion
 
+
+    #region EgoSword
+    EgoSwordController _egoSword;
+    void StartEgoSword()
+    {
+        if (_egoSword.IsValid())
+            return;
+
+        _egoSword = Managers.Object.Spawn<EgoSwordController>(_indicator.position, Define.EGO_SWORD_ID);
+        _egoSword.transform.SetParent(_indicator);
+
+        _egoSword.ActivateSkill();
+    }
+
+    #endregion
 }
