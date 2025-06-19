@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class UI_SkillSelectPopup : UI_Base
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    Transform _grid;
+
+    List<UI_SkillCardItem> _items = new List<UI_SkillCardItem>();
+
+
     void Start()
     {
-        
+        PopulateGrid();
     }
 
-    // Update is called once per frame
-    void Update()
+    void PopulateGrid()
     {
-        
+        foreach (Transform t in _grid.transform)
+        {
+            Managers.Resource.Destroy(t.gameObject);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            var go = Managers.Resource.Instantiate("UI_SkillCardItem.prefab", pooling: false);
+            UI_SkillCardItem item = go.GetOrAddComponent<UI_SkillCardItem>();
+
+            item.transform.SetParent(_grid.transform);
+
+            _items.Add(item);
+        }
     }
+
 }

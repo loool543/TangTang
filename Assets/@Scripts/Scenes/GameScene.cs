@@ -75,7 +75,7 @@ public class GameScene : MonoBehaviour
         Managers.Game.OnGemCountChanged -= HandleOnGemCountChanged;
         Managers.Game.OnGemCountChanged += HandleOnGemCountChanged;
 
-        Managers.Game.OnKillCountChanged += HandleOnKillCountChanged;
+        Managers.Game.OnKillCountChanged -= HandleOnKillCountChanged;
         Managers.Game.OnKillCountChanged += HandleOnKillCountChanged;
 
     }

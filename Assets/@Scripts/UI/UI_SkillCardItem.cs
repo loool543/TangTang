@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class UI_SkillCardItem : UI_Base
 {
-    // Start is called before the first frame update
-    void Start()
+    //어떤 스킬?
+    //몇 레벨?
+    //데이터시트?
+
+    int _templateId;
+    Data.SkillData _skillData;
+
+    public void SetInfo(int templateId)
     {
-        
+        _templateId = templateId;
+
+        Managers.Data.SkillDic.TryGetValue(templateId, out _skillData);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnClickItem()
     {
-        
+        //스킬 레벨 업그레이드
+        Debug.Log("OnClickItem");
+        Managers.UI.ClosePopup();
     }
 }
