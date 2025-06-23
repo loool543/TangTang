@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameScene : MonoBehaviour
 {
+
     void Start()
     {
         Managers.Resource.LoadAllASync<Object>("PreLoad", (key, count, totalCount) =>
@@ -39,14 +40,39 @@ public class GameScene : MonoBehaviour
         Camera.main.GetComponent<CameraController>().Target = player;
     }
 
-    SpawningPool spawningPool;
+    SpawningPool _spawningPool;
+
+    Define.StageType _stageType;
+    public Define.StageType StageType
+    {
+        get { return _stageType; }
+        set 
+        { 
+            _stageType = value; 
+
+            if(_spawningPool != null)
+            {
+                switch(value)
+                {
+                    case Define.StageType.Normal:
+                        _spawningPool.stopped = false;
+                        break;
+                    case Define.StageType.Boss:
+                        _spawningPool.stopped = true;
+                        break;
+                }
+            }
+
+        }
+    }
+
     void StartLoaded()
     {
         Managers.Data.Init();
 
         Managers.UI.ShowSceneUI<UI_GameScene>();
 
-        spawningPool = gameObject.AddComponent<SpawningPool>();
+        _spawningPool = gameObject.AddComponent<SpawningPool>();
 
         var player = Managers.Object.Spawn<PlayerController>(Vector3.zero);
         //GameObject go = new GameObject() { name = "@Monsters" };
@@ -103,6 +129,13 @@ public class GameScene : MonoBehaviour
         if(killCount == 10)
         {
             //BOSS
+            StageType = Define.StageType.Boss;
+
+            Managers.Object.DespawnAllMonsters();
+
+            Vector2 spawnPos = Utils.GenerateMonsterSpawnPosition(Managers.Game.Player.transform.position, 5, 10);
+
+            Managers.Object.Spawn<MonsterController>(spawnPos, Define.BOSS_ID);
         }
     }
 

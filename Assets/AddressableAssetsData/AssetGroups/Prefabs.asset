@@ -47,6 +47,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb14cb2dd57be9e4aa25058987a2fda0
+    m_Address: Boss_01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 18a0e6f2ff5043443bf27ea8fd5ee594, type: 2}
   m_SchemaSet:

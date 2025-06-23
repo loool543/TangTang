@@ -12,6 +12,7 @@ public class SpawningPool : MonoBehaviour
     int _max_MonsterCount = 100;
     Coroutine _coUpdateSpawningPool;
 
+    public bool stopped { get; set; } = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,13 +36,16 @@ public class SpawningPool : MonoBehaviour
 
     void TrySpawn()
     {
+        if (stopped)
+            return; 
+
         int monsterCount = Managers.Object.Monsters.Count;
         if (monsterCount >= _max_MonsterCount)
             return;
 
         //Data시트에서 ??
         Vector3 randPos = Utils.GenerateMonsterSpawnPosition(Managers.Game.Player.transform.position, 10, 15);
-        MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(0, 2));
+        MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, 1 + Random.Range(0, 2));
 
     }
 
