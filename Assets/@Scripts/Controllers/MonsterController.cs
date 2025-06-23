@@ -74,6 +74,8 @@ public class MonsterController : CreatureController
 
     void FixedUpdate()
     {
+        if (CreatureState != Define.CreatureState.Moving)
+            return;
         PlayerController pc = Managers.Object.Player;
         if (pc == null)
             return;

@@ -12,7 +12,10 @@ public class CreatureController : BaseController
 
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
-        Hp -= damage;
+        if (Hp <= 0)
+            return;
+
+            Hp -= damage;
         if(Hp <= 0)
         {
             Hp = 0;

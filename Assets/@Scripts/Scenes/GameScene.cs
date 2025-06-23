@@ -80,7 +80,7 @@ public class GameScene : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
-            MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(0, 2));
+            MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, 1+Random.Range(0, 2));
             //mc.transform.parent = go.transform;
         }
 
