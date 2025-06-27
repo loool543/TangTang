@@ -40,7 +40,6 @@ public class BossController : MonsterController
 
     protected override void UpdateMoving()
     {
-        Debug.Log("UpdateMoving!!");
         PlayerController pc = Managers.Object.Player;
         if (pc.IsValid() == false)
             return;
