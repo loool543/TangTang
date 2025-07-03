@@ -28,9 +28,8 @@ public static class Define
     public enum SkillType
     {
         None,
-        Melee,
-        Projectile,
-        Etc,
+        Sequence,
+        Repeat
     }
 
     public enum StageType

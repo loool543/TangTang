@@ -15,6 +15,11 @@ public class PlayerController : CreatureController
     [SerializeField]
     Transform _fireSocket;
 
+    public Transform Indicator { get { return _indicator; } }
+    public Vector3 FireSocket { get { return _fireSocket.position; } }
+    public Vector3 ShootDir { get { return (_fireSocket.position - _indicator.position).normalized; } }
+
+
     public Vector2 MoveDir
     {
         get { return _moveDir; }
@@ -27,11 +32,9 @@ public class PlayerController : CreatureController
             return false;
 
         _speed = 5.0f;
-        //Temp3 구독신청
-        Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged; //여기에서 함수 1개를 연결해주어야 한다!
+        Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
-        StartProjectile();
-        StartEgoSword();
+        //TODO
 
         return true;
     }
@@ -104,46 +107,4 @@ public class PlayerController : CreatureController
         cc?.OnDamaged(this, 10000);
     }
 
-    //TEMP
-    #region FireProjectile
-
-    Coroutine _coFireProjectile;
-
-    void StartProjectile()
-    {
-        if (_coFireProjectile != null)
-            StopCoroutine(_coFireProjectile);
-
-        _coFireProjectile = StartCoroutine(CoStartProjectile());
-    }
-
-    IEnumerator CoStartProjectile()
-    {
-        WaitForSeconds wait = new WaitForSeconds(0.5f);
-        while (true)
-        {
-            ProjectileController pc = Managers.Object.Spawn<ProjectileController>(_fireSocket.position, 1);
-            pc.SetInfo(1, this, (_fireSocket.position - _indicator.position).normalized); // 1번 스킬로 발사
-
-            yield return wait;
-        }
-    }
-
-    #endregion
-
-
-    #region EgoSword
-    EgoSwordController _egoSword;
-    void StartEgoSword()
-    {
-        if (_egoSword.IsValid())
-            return;
-
-        _egoSword = Managers.Object.Spawn<EgoSwordController>(_indicator.position, Define.EGO_SWORD_ID);
-        _egoSword.transform.SetParent(_indicator);
-
-        _egoSword.ActivateSkill();
-    }
-
-    #endregion
 }

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileController : SkillController
+public class ProjectileController : SkillBase
 {
     CreatureController _owner; // 투사체의 주인, 즉 발사한 캐릭터
     Vector3 _moveDir;
     float _speed = 10.0f;
     float _lifeTime = 10.0f; // 투사체의 생존 시간
+
+    public ProjectileController() : base(Define.SkillType.None) { }
 
     public override bool Init()
     {
