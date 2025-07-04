@@ -34,7 +34,8 @@ public class PlayerController : CreatureController
         _speed = 5.0f;
         Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
-        //TODO
+        skills.AddSkill<FireballSkill>(transform.position);
+        skills.AddSkill<EgoSword>(_indicator.position);
 
         return true;
     }

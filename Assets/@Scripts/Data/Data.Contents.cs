@@ -95,8 +95,8 @@ namespace Data
         [XmlAttribute]
         public int templateID;
 
-        [XmlAttribute]
-        public Define.SkillType skillType = Define.SkillType.None;
+        //[XmlAttribute(AttributeName = "type")]
+        //public Define.SkillType skillType = Define.SkillType.None;
 
 		[XmlAttribute]
 		public int nextId;

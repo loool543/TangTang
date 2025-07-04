@@ -126,7 +126,7 @@ public class GameScene : MonoBehaviour
     {
         Managers.UI.GetSceneUI<UI_GameScene>().SetKillCount(killCount);
 
-        if(killCount == 10)
+        if(killCount == 30)
         {
             //BOSS
             StageType = Define.StageType.Boss;
